@@ -1,0 +1,38 @@
+<div>
+    <h5 class="mb-0">Thêm mới người dùng</h5>
+    <hr>
+</div>
+<div>
+    <!-- <div class="col-md-12"><span><strong>{{user.fullName}}</strong></span></div> -->
+</div>
+<div class="col-md-12 mt-2">
+    <div class="form-group card-body" (ngSubmit)="register()">
+        <label>Họ và tên</label><br>
+        <input class="form-control" placeholder="Nhập họ và tên" [(ngModel)]="registerInfo.name"><br>
+        <label>Địa chỉ</label><br>
+        <input class="form-control" placeholder="Nhập địa chỉ" [(ngModel)]="registerInfo.address"><br>
+        <!-- <label style="font-size: 13px; margin-right: 16px;">Bạn có phải là người đăng bán:</label>
+        <label class="form-check-inline">
+            <input class="form-check-input" type="radio" name="mode" [value]="true" [(ngModel)]="registerInfo.isHost">
+            Đúng
+        </label>
+        <label class="form-check-inline">
+            <input class="form-check-input" type="radio" name="mode" [value]="false" [(ngModel)]="registerInfo.isHost">
+            Sai
+        </label> -->
+        <label>Số điện thoại</label><br>
+        <input class="form-control w-100" placeholder="Nhập số điện thoại" [(ngModel)]="registerInfo.phone">
+        <br>
+        <div>
+            <label for="">Vai trò</label>
+            <!-- <span class="text-danger">(*)</span> -->
+            <ng-select placeholder="Chọn vai trò" appearance="outline" [items]="roleList" bindLabel="name"
+                bindValue="code" [(ngModel)]="registerInfo.role">
+            </ng-select>
+        </div>
+    </div>
+</div>
+<mat-dialog-actions align="end" class="p-0">
+    <button class="btn btn-primary" type="submit" (click)="register()" style="height: 42px;">Đăng ký</button>
+    <button mat-button [mat-dialog-close]="true" class="btn btn-danger-primary" style="height: 42px;">Hủy</button>
+</mat-dialog-actions>
