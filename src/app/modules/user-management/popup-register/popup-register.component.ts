@@ -26,7 +26,7 @@ export class PopupRegisterComponent implements OnInit {
   registerForm: any;
   otpForm: any;
   isShowOtp = false;
-  isShowRegister = false;
+  isShowRegister = true;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<PopupRegisterComponent>,
@@ -45,7 +45,7 @@ export class PopupRegisterComponent implements OnInit {
   }
   register() {
     if (this.registerInfo) {
-      this.registerInfo.phone = this.registerInfo.phone;
+      this.registerInfo.phone = '+84' + this.registerInfo.phone;
         this.userService.registerUser(this.registerInfo).subscribe(
           res => {
               this.dialogRef.close();
