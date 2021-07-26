@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { PopupRegisterComponent } from './popup-register/popup-register.component';
 
 @Component({
@@ -17,12 +18,26 @@ export class UserManagementComponent implements OnInit {
   constructor(
     public router: Router,
     private dialog: MatDialog,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       name: new FormControl("", null),
     });
+    this.getUsers();
+  }
+
+  getUsers() {
+    let param: any = {
+      searchValue: this.searchForm.value.name,
+    }
+
+    this.userService.getAllUser(param).subscribe(res => {
+      if (res) {
+        this.listUser = res;
+      }
+    })
   }
 
   openModalRegister() {
@@ -31,19 +46,8 @@ export class UserManagementComponent implements OnInit {
       height: '600px',
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.getUsers();
     });
   }
-
-  getAllUser() {
-    let param: any = {
-      searchValue: this.searchForm.value.name,
-    }
-    // this.userService.getAllUser(param).subscribe(res => {
-    //   if (res) {
-    //     this.listUser = res;
-    //   }
-    // })
-  }
-
 
 }

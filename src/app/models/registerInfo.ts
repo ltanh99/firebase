@@ -4,9 +4,11 @@ export class RegisterInfo {
         this.name = '';
         this.phone = '';
         this.role = '';
+        this.id = '';
     }
     address: string
     name: string
     phone: string
     role: string
+    id: string
 }
