@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupReplyComponent } from './popup-reply/popup-reply.component';
 import { CommunicationsService } from 'src/app/services/communications.service';
+
+import { PopupReplyComponent } from './popup-reply/popup-reply.component';
 
 @Component({
   selector: 'app-question-management',
@@ -11,11 +12,11 @@ import { CommunicationsService } from 'src/app/services/communications.service';
 export class QuestionManagementComponent implements OnInit {
 
   roleList = [
-    { code: 'chef', name: 'Đầu bếp' },
-    { code: 'customer', name: 'Khách hàng' },
+    { code: 'Chef', name: 'Đầu bếp' },
+    { code: 'Customer', name: 'Khách hàng' },
     { code: 'manager', name: 'Quản lý' },
-    { code: 'receptionist', name: 'Thu ngân' },
-    { code: 'waiter', name: 'Bồi bàn' },
+    { code: 'Receptionist', name: 'Thu ngân' },
+    { code: 'Waiter', name: 'Bồi bàn' },
   ]
   listQuestionWaiter = []
   listQuestionKitchen = []
@@ -102,10 +103,10 @@ export class QuestionManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this. getListQuestion('chef');
-    this. getListQuestion('customer');
-    this. getListQuestion('receptionist');
-    this. getListQuestion('waiter');
+    this. getListQuestion('Chef');
+    this. getListQuestion('Customer');
+    this. getListQuestion('Receptionist');
+    this. getListQuestion('Waiter');
   }
 
   getListQuestion(type) {
@@ -121,29 +122,29 @@ export class QuestionManagementComponent implements OnInit {
 
   handleData(data, type) {
     if (data) {
-      if (type == 'chef') {
+      if (type == 'Chef') {
         this.listQuestionKitchen = data;
       }
-      if (type == 'customer') {
+      if (type == 'Customer') {
         this.listQuestionCustomer = data;
       }
-      if (type == 'waiter') {
+      if (type == 'Waiter') {
         this.listQuestionWaiter = data;
       }
-      if (type == 'receptionist') {
+      if (type == 'Receptionist') {
         this.listQuestionReceptionist = data;
       }
     } else {
-      if (type == 'chef') {
+      if (type == 'Chef') {
         this.listQuestionKitchen = this.dataFakeKitchen;
       }
-      if (type == 'customer') {
+      if (type == 'Customer') {
         this.listQuestionCustomer = this.dataFakeCustomer;
       }
-      if (type == 'waiter') {
+      if (type == 'Waiter') {
         this.listQuestionWaiter = this.dataFakeWaiter;
       }
-      if (type == 'receptionist') {
+      if (type == 'Receptionist') {
         this.listQuestionReceptionist = this.dataFakeReceptionist;
       }
     }
@@ -157,6 +158,10 @@ export class QuestionManagementComponent implements OnInit {
       data: item
     });
     dialogRef.afterClosed().subscribe(result => {
+      this. getListQuestion('Chef');
+      this. getListQuestion('Customer');
+      this. getListQuestion('Receptionist');
+      this. getListQuestion('Waiter');
     });
   }
 }

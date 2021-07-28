@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class CommunicationsService {
 
 
   getListQuestion(type): Observable<any> {
-    return this.http.get(`${this.apiUrl}?type=${type}`);
+    return this.http.post(`${this.apiUrl}?type=${type}`,{});
   }
 
   reply(question): Observable<any> {
