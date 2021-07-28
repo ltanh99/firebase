@@ -21,8 +21,6 @@ export class PopupReplyComponent implements OnInit {
 
   reply() {
     let body = {
-      "id": this.data?.id,
-      "isSeen": true,
       "message": this.data?.message,
       "messageId": this.data?.id,
       "messageReply": this.answer,
