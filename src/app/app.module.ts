@@ -15,12 +15,16 @@ import { UserManagementComponent } from './modules/user-management/user-manageme
 import { PopupRegisterComponent } from './modules/user-management/popup-register/popup-register.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
+import { QuestionManagementComponent } from './modules/question-management/question-management.component';
+import { PopupReplyComponent } from './modules/question-management/popup-reply/popup-reply.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserManagementComponent,
     PopupRegisterComponent,
+    QuestionManagementComponent,
+    PopupReplyComponent,
     
   ],
   imports: [

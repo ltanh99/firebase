@@ -4,11 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultComponent } from './layouts/default/default.component';
 import { ListTableComponent } from './modules/list-table/list-table.component';
+import { QuestionManagementComponent } from './modules/question-management/question-management.component';
 import { SetTableComponent } from './modules/set-table/set-table.component';
 import { UserManagementComponent } from './modules/user-management/user-management.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list-table', pathMatch: 'full' },
+  { path: '', redirectTo: 'question', pathMatch: 'full' },
   {
     path: '',
     component: DefaultComponent,
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'set-table', component: SetTableComponent },
       { path: 'set-table/:id', component: SetTableComponent },
       { path: 'user', component: UserManagementComponent },
+      { path: 'question', component: QuestionManagementComponent },
     ]
   },
   
