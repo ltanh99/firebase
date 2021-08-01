@@ -134,19 +134,6 @@ export class QuestionManagementComponent implements OnInit {
       if (type == 'Receptionist') {
         this.listQuestionReceptionist = data;
       }
-    } else {
-      if (type == 'Chef') {
-        this.listQuestionKitchen = this.dataFakeKitchen;
-      }
-      if (type == 'Customer') {
-        this.listQuestionCustomer = this.dataFakeCustomer;
-      }
-      if (type == 'Waiter') {
-        this.listQuestionWaiter = this.dataFakeWaiter;
-      }
-      if (type == 'Receptionist') {
-        this.listQuestionReceptionist = this.dataFakeReceptionist;
-      }
     }
   }
 
