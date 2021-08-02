@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './modules/login/login.component';
 import { AuthComponent } from './services/auth/auth.component';
+import { QuestionManagementComponent } from './modules/question-management/question-management.component';
+import { PopupReplyComponent } from './modules/question-management/popup-reply/popup-reply.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AuthComponent } from './services/auth/auth.component';
     PopupRegisterComponent,
     LoginComponent,
     AuthComponent,
-    
+    QuestionManagementComponent,
+    PopupReplyComponent,
+
   ],
   imports: [
     BrowserModule,
