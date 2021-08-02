@@ -15,12 +15,17 @@ import { UserManagementComponent } from './modules/user-management/user-manageme
 import { PopupRegisterComponent } from './modules/user-management/popup-register/popup-register.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './modules/login/login.component';
+import { AuthComponent } from './services/auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserManagementComponent,
     PopupRegisterComponent,
+    LoginComponent,
+    AuthComponent,
     
   ],
   imports: [
@@ -31,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule,
     DefaultModule,
     NgSelectModule,
     BrowserAnimationsModule

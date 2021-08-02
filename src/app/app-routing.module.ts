@@ -4,19 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultComponent } from './layouts/default/default.component';
 import { ListTableComponent } from './modules/list-table/list-table.component';
+import { LoginComponent } from './modules/login/login.component';
 import { SetTableComponent } from './modules/set-table/set-table.component';
 import { UserManagementComponent } from './modules/user-management/user-management.component';
+import { AuthGuardService as AuthGuard } from 'src/app/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list-table', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full',canActivate: [AuthGuard] },
   {
     path: '',
     component: DefaultComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'list-table', component: ListTableComponent },
       { path: 'set-table', component: SetTableComponent },
       { path: 'set-table/:id', component: SetTableComponent },
       { path: 'user', component: UserManagementComponent },
+      { path: 'login', component: LoginComponent },
     ]
   },
   
