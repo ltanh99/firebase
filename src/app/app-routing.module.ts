@@ -11,8 +11,7 @@ import { UserManagementComponent } from './modules/user-management/user-manageme
 import { AuthGuardService as AuthGuard } from 'src/app/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full',canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'question', pathMatch: 'full' },
+  { path: '', redirectTo: 'question', pathMatch: 'full',canActivate: [AuthGuard] },
   {
     path: '',
     component: DefaultComponent,
