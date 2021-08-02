@@ -32,4 +32,8 @@ export class UserService {
     }
     return this.http.get(`${this.apiUrl}`, { params: params })
   }
+
+  checkExistUser(phoneNumber): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${phoneNumber}`);
+  }
 }

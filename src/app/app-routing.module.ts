@@ -11,11 +11,15 @@ import { UserManagementComponent } from './modules/user-management/user-manageme
 import { AuthGuardService as AuthGuard } from 'src/app/services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'question', pathMatch: 'full',canActivate: [AuthGuard] },
+  { path: '', 
+  redirectTo: 'login', 
+  pathMatch: 'full', 
+  // canActivate: [AuthGuard] 
+  },
   {
     path: '',
     component: DefaultComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: 'list-table', component: ListTableComponent },
       { path: 'set-table', component: SetTableComponent },
@@ -25,11 +29,13 @@ const routes: Routes = [
       { path: 'question', component: QuestionManagementComponent },
     ]
   },
-
+  { path: '**', redirectTo: '' }
 ]
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    useHash: true
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

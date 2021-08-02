@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 export class PhoneNumber {
   // country: string;
@@ -33,6 +35,8 @@ export class LoginComponent {
   constructor(
     private win: WindowService,
     public router: Router,
+    public userService: UserService,
+    private toastr: ToastrService,
     ) { 
     const firebaseConfig = environment.firebase;
     if (!firebase.apps.length) {
@@ -49,11 +53,17 @@ export class LoginComponent {
   sendLoginCode() {
     const appVerifier = this.windowRef.recaptchaVerifier;
     const num = this.phoneNumber.e164;
-    firebase.auth().signInWithPhoneNumber(num, appVerifier).then(result => {
-      this.windowRef.confirmationResult = result;
-      this.isSentOtp = true;
+    this.userService.checkExistUser(num).subscribe(res => {
+      if (res?.phone) {
+        firebase.auth().signInWithPhoneNumber(num, appVerifier).then(result => {
+          this.windowRef.confirmationResult = result;
+          this.isSentOtp = true;
+        })
+        .catch( error => console.log(error) );
+      } else {
+        this.toastr.error("Số điện thoại không có trên hệ thống");
+      }
     })
-    .catch( error => console.log(error) );
   }
 
   verifyLoginCode() {

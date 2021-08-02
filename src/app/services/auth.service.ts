@@ -16,6 +16,10 @@ export class AuthService {
     if (localStorage.getItem("user")) {
       user = JSON.parse(localStorage.getItem("user"));
     }
-    return (parseInt(expireTime) > (new Date()).getTime()) && user
+    // return true
+    if (expireTime) {
+      return (parseInt(expireTime) > (new Date()).getTime())
+    }
+    return false;
   }
 }
